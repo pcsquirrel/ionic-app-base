@@ -19,3 +19,32 @@ angular.module('starter', ['ionic'])
     }
   });
 })
+
+ .controller('MainCtrl', function($scope, $ionicSideMenuDelegate, $http) {
+      $scope.tech = [
+        'node',
+        'graphics',
+        'es6',
+        'mv'
+      ];
+
+
+      $http.get('http://tagtree.tv/feed.json')
+      .success(function(episodes){
+        $scope.allEpisodes = episodes;
+        $scope.episodes = episodes;
+      });
+
+      $scope.filterBy = function(filter){
+        if(filter === 'all'){
+          return $scope.episodes = $scope.allEpisodes;
+        }
+        $scope.episodes = $scope.allEpisodes.filter(function(ep){return ep.tech.indexOf(filter) > -1;})
+      }
+
+
+
+      $scope.toggleLeft = function() {
+        $ionicSideMenuDelegate.toggleLeft();
+      };
+    })
