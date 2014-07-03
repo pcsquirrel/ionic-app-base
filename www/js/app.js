@@ -29,9 +29,12 @@ angular.module('starter', ['ionic'])
       ];
 
 
-      $http.get('http://tagtree.tv/feed.json')
+      $http.get('js/pflanzen.json')
       .success(function(episodes){
         $scope.allEpisodes = episodes;
+      
+          $scope.groups = _.groupBy(episodes, "FamilieLatein");
+
         $scope.episodes = episodes;
       });
 
