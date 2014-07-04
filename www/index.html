@@ -38,15 +38,12 @@
 
           <ion-content>
           <div class="list">
-        <!--<div class="item" ng-reiderpeat="episode in episodes">
-                {{episode.NameLatein}}s
 
-            </div>-->
-           <div ng-repeat="episode in groups">
+           <div ng-repeat="(episode, b) in groups">
                <div class="item item-divider" >
-                {{episode.NameLatein}}
+                {{episode}}
                </div>
-               <a class="item" ng-repeat="pflanze in episode">
+               <a class="item" ng-repeat="pflanze in b">
                    {{pflanze.NameLatein}}
                </a>
             </div>
