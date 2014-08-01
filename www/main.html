@@ -1,0 +1,38 @@
+
+      <ion-side-menus>
+
+        <ion-side-menu-content>
+            <ion-header-bar align-title="center" class="bar-positive">
+            <div class="buttons">
+              <button class="button button-icon button-clear ion-navicon"
+                ng-click="toggleLeft()" />
+            </div>
+            <h1 class="title">Pflanzen &Uuml;bersicht</h1>
+          </ion-header-bar>
+
+
+          <ion-content>
+          <div class="list">
+
+           <div ng-repeat="(episode, b) in groups">
+               <div class="item item-divider" >
+                {{episode}}
+               </div>
+               <a class="item" ng-repeat="pflanze in b" ui-sref="pflanze({id:pflanze.FNL_ID})">
+                   {{pflanze.NameLatein}}
+               </a>
+            </div>
+          </div>
+            </ion-content> 
+        </ion-side-menu-content>
+
+ <ion-side-menu side="left">
+          <ul class="list">
+            <a ng-click="filterBy('all')" class="item" menu-close>all</a>
+            <a ng-repeat="techItem in tech" ng-click="filterBy(techItem)" class="item" menu-close>{{techItem}}</a>
+          </ul>
+        </ion-side-menu>
+      </ion-side-menus>
+    
+    
+    
