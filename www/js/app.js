@@ -20,7 +20,7 @@ angular.module('starter', ['ionic'])
   });
 })
 
- .controller('MainCtrl', function($scope, $ionicSideMenuDelegate, $http) {
+ .controller('MainCtrl', function($scope, $ionicSideMenuDelegate, PflanzenService) {
       $scope.tech = [
         'node',
         'graphics',
@@ -29,14 +29,14 @@ angular.module('starter', ['ionic'])
       ];
 
 
-      $http.get('js/pflanzen.json')
-      .success(function(episodes){
-        $scope.allEpisodes = episodes;
+     
+     PflanzenService.getPflanzen(function (results){
+        $scope.allEpisodes = results;
       
-          $scope.groups = _.groupBy(episodes, "FamilieLatein");
+          $scope.groups = _.groupBy(results, "FamilieLatein");
 
-        $scope.episodes = episodes;
-      });
+        $scope.episodes = results;
+     });
 
       $scope.filterBy = function(filter){
         if(filter === 'all'){
@@ -45,9 +45,80 @@ angular.module('starter', ['ionic'])
         $scope.episodes = $scope.allEpisodes.filter(function(ep){return ep.tech.indexOf(filter) > -1;})
       }
 
-
-
-      $scope.toggleLeft = function() {
+      $scope.toggleLeft = function() { 
         $ionicSideMenuDelegate.toggleLeft();
       };
     })
+
+.controller('PflanzeCtrl', function($scope, $stateParams, PflanzenService) {
+    $scope.id = $stateParams.id;
+    PflanzenService.getPflanze($stateParams.id,function (result){
+        $scope.pflanze = result;
+     });
+
+    })
+
+
+.config(function($stateProvider, $urlRouterProvider) {
+
+  $stateProvider
+    .state('main', {
+      url: "/main",
+      templateUrl: "main.html",
+      controller: 'MainCtrl'
+    })
+    .state('pflanze', {
+      url: "/pflanze/:id",
+      templateUrl: "pflanze.html",
+      controller: 'PflanzeCtrl'
+    })
+
+  // if none of the above are matched, go to this one
+    $urlRouterProvider.otherwise("/main");
+})
+
+.factory('PflanzenService', function($http) {
+  var allePflanzen = null
+  var pflanzen = []
+  var familien = []
+  
+  function getPflanzenInt(callback){
+          if(allePflanzen == null){
+              $http.get('./js/pflanzen.json').success(
+                  function(pflanzenDl,status){
+    //  alert(status);
+                    allePflanzen = pflanzenDl
+                    callback(allePflanzen)
+                  }
+              ).
+    error(function(data, status, headers, config) {
+      alert(data);
+      alert(status);
+    })
+             /* allePflanzen = [{"FNL_ID":"9908","NameLatein":"Taraxacum officinale","NameDroge":[],"Seite":"99","geschuetzt":"false","FamilieDeutsch":"Korbbl?tler","FamilieLatein":"Asteraceae","Nummer":"13","Namen":{"Name":"L?wenzahn","Sort":"1"},"Synonym":"Leontodon taraxacum","Entwicklung":"m","Giftigkeit":[],"FamilieSynonym":"false"},
+{"FNL_ID":"6807","NameLatein":"Marchantia polymorpha","NameDroge":[],"Seite":"68","geschuetzt":"false","FamilieDeutsch":"Leberkrautgew?chse","FamilieLatein":"Marchantiaceae","Nummer":"14","Namen":[{"Name":"Sternlebermoos","Sort":"1"},{"Name":"Brunnenleber-kraut","Sort":"2"}],"Synonym":[],"Entwicklung":"m","Giftigkeit":[],"FamilieSynonym":"false"},
+{"FNL_ID":"10303","NameLatein":"Tulipa gesneriana","NameDroge":[],"Seite":"103","geschuetzt":"false","FamilieDeutsch":"Liliengew?chse","FamilieLatein":"Liliaceae","Nummer":"15","Namen":{"Name":"Garten-Tulpe","Sort":"1"},"Synonym":[],"Entwicklung":"m","Giftigkeit":"!","FamilieSynonym":"false"}];
+              callback(allePflanzen);*/
+          }else{
+          callback(allePflanzen);
+              }
+  }
+  return {
+      getPflanzen: function(callback) {
+          getPflanzenInt(callback)
+      },
+      getPflanze: function(FNLID, callback){
+          getPflanzenInt(function(allePflanzen){
+              var pflanze = null
+            for (var i = 0; i < allePflanzen.length; i++) {
+                if(allePflanzen[i].FNL_ID == FNLID){
+                    pflanze = allePflanzen[i]
+                    break;
+                }
+            }
+            callback(pflanze)  
+          })
+      }
+      
+  }
+})

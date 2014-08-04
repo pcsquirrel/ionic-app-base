@@ -11,7 +11,7 @@
     <!-- IF using Sass (run gulp sass first), then remove the CSS include above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js"></script>
+    <script src="lib/underscore.js"></script>
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
@@ -23,41 +23,8 @@
   </head>
 
   <body ng-app="starter">
-<div ng-controller="MainCtrl">
-      <ion-side-menus>
+      <!-- where the initial view template will be rendered -->
+  <ion-nav-view animation="slide-left-right"></ion-nav-view>
 
-        <ion-side-menu-content>
-            <ion-header-bar align-title="center" class="bar-positive">
-            <div class="buttons">
-              <button class="button button-icon button-clear ion-navicon"
-                ng-click="toggleLeft()" />
-            </div>
-            <h1 class="title">Episodes</h1>
-          </ion-header-bar>
-
-
-          <ion-content>
-          <div class="list">
-
-           <div ng-repeat="(episode, b) in groups">
-               <div class="item item-divider" >
-                {{episode}}
-               </div>
-               <a class="item" ng-repeat="pflanze in b">
-                   {{pflanze.NameLatein}}
-               </a>
-            </div>
-          </div>
-            </ion-content> 
-        </ion-side-menu-content>
-
- <ion-side-menu side="left">
-          <ul class="list">
-            <a ng-click="filterBy('all')" class="item" menu-close>all</a>
-            <a ng-repeat="techItem in tech" ng-click="filterBy(techItem)" class="item" menu-close>{{techItem}}</a>
-          </ul>
-        </ion-side-menu>
-      </ion-side-menus>
-    </div>
     </body>
 </html>
