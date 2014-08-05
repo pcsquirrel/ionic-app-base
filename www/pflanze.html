@@ -1,8 +1,47 @@
-      <ion-content>
-               <div class="item item-divider" >
-                   {{pflanze.NameLatein}}
+<ion-view title="{{pflanze.Namen[0].Name}} / {{pflanze.NameLatein}}">
+      <ion-content><button class="button button-block button-positiv">
+{{pflanze.FamilieDeutsch}} - {{pflanze.FamilieLatein}}
+          </button>
+
+    
+               <div class="card" ng-if="pflanze.Synonym">
+                  <div class="item item-divider" >
+                      Synonyme
+                   </div>
+                  <div class="item item-text-wrap" >
+                         <p ng-if="pflanze.Synonym">{{pflanze.Synonym}}</p>
+                         <p ng-if="pflanze.Namen.length > 1"> <a ng-repeat="name in pflanze.Namen">{{name.Name}}, </a>
+                   </div>
                </div>
-               <div class="item item-divider" >
-                   {{id}}
+          <div class="row" style="padding:0">
+            <div class="col" style="padding:0">
+               <div class="card">
+                  <div class="item item-divider" >
+                      Entwicklunge
+                   </div>
+                  <div class="item item-text-wrap" >
+                      mehrjährig
+                   </div>
                </div>
+            </div>
+            <div class="col" style="padding:0">
+               <div class="card">
+                  <div class="item item-divider" >
+                      Giftigkeit
+                   </div>
+                  <div class="item item-text-wrap" >
+                      !!
+                   </div>
+               </div>
+            </div>
+          </div>
+          <div class="row" style="padding:0">
+              <ion-scroll direction="x"><div width="1000px">
+                      <img src="img/IMG_1073.JPG" style="height: 300px;"/>
+                      <img src="img/IMG_1074.JPG" style="height: 300px;"/>
+                      <img src="img/IMG_1073.JPG" style="height: 300px;"/>
+                      <img src="img/IMG_1074.JPG" style="height: 300px;"/></div>
+              </ion-scroll
+              </div>
           </ion-content>
+    </ion-view>
