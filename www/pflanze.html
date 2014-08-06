@@ -1,4 +1,4 @@
-<ion-view title="{{pflanze.Namen[0].Name}} / {{pflanze.NameLatein}}">
+<ion-view title="{{pflanze.NameDeutsch}} / {{pflanze.NameLatein}}">
       <ion-content><button class="button button-block button-positiv">
 {{pflanze.FamilieDeutsch}} - {{pflanze.FamilieLatein}}
           </button>
@@ -17,6 +17,16 @@
             <div class="col" style="padding:0">
                <div class="card">
                   <div class="item item-divider" >
+                      Informationen
+                   </div>
+                  <div class="item item-text-wrap" >
+                      <a class="button button-icon icon ion-social-usd"></a>
+                   </div>
+               </div>
+            </div>
+            <div class="col" style="padding:0">
+               <div class="card">
+                  <div class="item item-divider" >
                       Entwicklunge
                    </div>
                   <div class="item item-text-wrap" >
@@ -24,6 +34,7 @@
                    </div>
                </div>
             </div>
+              
             <div class="col" style="padding:0">
                <div class="card">
                   <div class="item item-divider" >
@@ -35,34 +46,33 @@
                </div>
             </div>
           </div>
+
+          
+            <ion-scroll zooming="true" min-zoom="1" direction="x"><div style="   white-space: nowrap;">
+                      <img ng-repeat="bild in pflanze.Bilder" src="img/{{bild.Datei}}" style="height: 300px;"/>
+                      </div>
+            </ion-scroll>
+         <div class="card" ng-if="pflanze.Fundorte.length >=1">
+                <div class="item item-divider" >
+                      Fundort
+                   </div>
+             <div ng-repeat="Fundort in pflanze.Fundorte">
+                <div class="item item-text-wrap" >
+                    <div >{{Fundort.Ort}} bei {{Fundort.Stadt}} in {{Fundort.Bundesland}}, {{Fundort.Land}}</div>
+                   <div>{{Fundort.Seehoehe}} Meter &uuml;NN.</div>
+                </div>
+
+                <div class="item item-text-wrap" style="padding: 0px;" >
+                    <img src="img/{{Fundort.Datei}}" style="width: 100%;"></image>
+                </div>
+             </div>
+             </div>
+          </ion-content>
+    </ion-view>
+
+
         <!--      <ion-slide-box>
                       <ion-slide><img src="img/IMG_1073.JPG" style="height: 300px;"/></ion-slide>
                       <ion-slide><img src="img/IMG_1074.JPG" style="height: 300px;"/></ion-slide>
                       <ion-slide><img src="img/IMG_1073.JPG" style="height: 300px;"/></ion-slide>
-                      <ion-slide><img src="img/IMG_1074.JPG" style="height: 300px;"/></ion-slide>
-                      <ion-slide><img src="img/IMG_1073.JPG" style="height: 300px;"/></ion-slide>
-                      <ion-slide><img src="img/IMG_1074.JPG" style="height: 300px;"/></ion-slide>
-                      <ion-slide><img src="img/IMG_1073.JPG" style="height: 300px;"/></ion-slide>
-                      <ion-slide><img src="img/IMG_1074.JPG" style="height: 300px;"/></ion-slide>
               </ion-slide-box>-->
-          
-            <ion-scroll zooming="true" min-zoom="1" direction="x"><div style="   white-space: nowrap;">
-                      <img src="img/IMG_1073.JPG" style="height: 300px;"/>
-                      <img src="img/IMG_1074.JPG" style="height: 300px;"/>
-                      <img src="img/IMG_1073.JPG" style="height: 300px;"/>
-                      <img src="img/IMG_1074.JPG" style="height: 300px;"/>
-                      <img src="img/IMG_1073.JPG" style="height: 300px;"/>
-                      <img src="img/IMG_1074.JPG" style="height: 300px;"/>
-                </div>
-              </ion-scroll>
-          <div>hier ist auch noch was</div>
-          <div>hier ist auch noch was</div>
-          <div>hier ist auch noch was</div>
-          <div>hier ist auch noch was</div>
-          <div>hier ist auch noch was</div>
-          <div>hier ist auch noch was</div>
-          <div>hier ist auch noch was</div>
-          <div>hier ist auch noch was</div>
-          <div>hier ist auch noch was</div>
-          </ion-content>
-    </ion-view>

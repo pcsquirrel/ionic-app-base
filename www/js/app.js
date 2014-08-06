@@ -84,7 +84,8 @@ angular.module('starter', ['ionic'])
   
   function getPflanzenInt(callback){
           if(allePflanzen == null){
-              $http.get('./js/pflanzen.json').success(
+//              $http.get('./js/pflanzen_auswahl.json').success(
+              $http.get('./js/pflanzen_neu.json').success(
                   function(pflanzenDl,status){
     //  alert(status);
                     allePflanzen = pflanzenDl
@@ -113,6 +114,11 @@ angular.module('starter', ['ionic'])
             for (var i = 0; i < allePflanzen.length; i++) {
                 if(allePflanzen[i].FNL_ID == FNLID){
                     pflanze = allePflanzen[i]
+                    if(pflanze.Namen.length > 1){
+                        pflanze.NameDeutsch = pflanze.Namen[0].Name
+                    }else{
+                        pflanze.NameDeutsch = pflanze.Namen.Name
+                    }
                     break;
                 }
             }
