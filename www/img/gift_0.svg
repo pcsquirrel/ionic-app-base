@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="giftig_0.svg"
+   sodipodi:docname="gift_0.svg"
    inkscape:export-filename="C:\Users\philipp.ORLANDO\Desktop\gift_0.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
@@ -28,7 +28,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="15.839192"
-     inkscape:cx="6.43588"
+     inkscape:cx="-5.6543832"
      inkscape:cy="25.118018"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -67,19 +67,19 @@
      id="layer1"
      transform="translate(0,-1017.3622)">
     <path
-       style="fill:#d4aa00;stroke:#d4aa00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:#d4aa00;stroke:#d4aa00;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 17.5,3.4327329 0,30.1783071"
        id="path3780"
        inkscape:connector-curvature="0"
        transform="translate(0,1017.3622)" />
     <path
-       style="fill:#d4aa00;stroke:#d4aa00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:#d4aa00;stroke:#d4aa00;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 12.311234,8.4834956 10.732871,0"
        id="path3782"
        inkscape:connector-curvature="0"
        transform="translate(0,1017.3622)" />
     <path
-       style="fill:none;stroke:#d4aa00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:none;stroke:#d4aa00;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 12.125298,1049.7332 c 0,0 -8.5623624,-11.2253 -0.666248,-27.9506"
        id="path3820"
        inkscape:connector-curvature="0"
@@ -89,6 +89,6 @@
        inkscape:connector-curvature="0"
        id="path3822"
        d="m 23.708672,1049.7332 c 0,0 8.562363,-11.2253 0.666248,-27.9506"
-       style="fill:none;stroke:#d4aa00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+       style="fill:none;stroke:#d4aa00;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" />
   </g>
 </svg>

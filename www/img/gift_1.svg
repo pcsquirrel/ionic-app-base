@@ -14,8 +14,8 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="giftig_1.svg"
-   inkscape:export-filename="C:\Users\philipp.ORLANDO\Desktop\geschuetzt.png"
+   sodipodi:docname="gift_1.svg"
+   inkscape:export-filename="C:\Users\philipp.ORLANDO\Desktop\gift_1.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -28,7 +28,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="15.839192"
-     inkscape:cx="6.43588"
+     inkscape:cx="-17.744646"
      inkscape:cy="25.118018"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -67,23 +67,13 @@
      id="layer1"
      transform="translate(0,-1017.3622)">
     <path
-       sodipodi:type="arc"
-       style="fill:#1a1a1a;stroke:#ffffff;stroke-width:6.90000009999999970;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       id="path2985"
-       sodipodi:cx="13.571428"
-       sodipodi:cy="14.375"
-       sodipodi:rx="6.4285712"
-       sodipodi:ry="3.3035715"
-       d="m 20,14.375 a 6.4285712,3.3035715 0 1 1 -12.8571429,0 A 6.4285712,3.3035715 0 1 1 20,14.375 z"
-       transform="translate(0,1017.3622)" />
-    <path
-       style="fill:#d4aa00;stroke:#d4aa00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:#d4aa00;stroke:#d4aa00;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 17.5,3.4327329 0,30.1783071"
        id="path3780"
        inkscape:connector-curvature="0"
        transform="translate(0,1017.3622)" />
     <path
-       style="fill:#d4aa00;stroke:#d4aa00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:#d4aa00;stroke:#d4aa00;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 12.311234,8.4834956 10.732871,0"
        id="path3782"
        inkscape:connector-curvature="0"
