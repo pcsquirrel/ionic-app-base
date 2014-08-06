@@ -1,58 +1,54 @@
 <ion-view title="{{pflanze.NameDeutsch}} / {{pflanze.NameLatein}}">
-      <ion-content><button class="button button-block button-positiv">
+    <ion-content>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+              <div class="item item-divider" >
+                      Familie
+               </div>
+              <div class="item item-text-wrap" >
 {{pflanze.FamilieDeutsch}} - {{pflanze.FamilieLatein}}
-          </button>
+            </div> 
 
     
-               <div class="card" ng-if="pflanze.Synonym">
+               <div  ng-if="pflanze.Synonym">
                   <div class="item item-divider" >
                       Synonyme
                    </div>
                   <div class="item item-text-wrap" >
-                         <p ng-if="pflanze.Synonym">{{pflanze.Synonym}}</p>
-                         <p ng-if="pflanze.Namen.length > 1"> <a ng-repeat="name in pflanze.Namen">{{name.Name}}, </a>
+                         <div ng-if="pflanze.Synonym">{{pflanze.Synonym}}</div>
+                         <div ng-if="pflanze.Namen.length > 1"> <a ng-repeat="name in pflanze.Namen">{{name.Name}}, </a>
                    </div>
                </div>
-          <div class="row" style="padding:0">
-            <div class="col" style="padding:0">
+                   </div>
+      </div>
+        </div>
+            <div class="col">
                <div class="card">
                   <div class="item item-divider" >
                       Informationen
                    </div>
                   <div class="item item-text-wrap" >
-                      <img src="img/gift_0.png"/>
-                      <img src="img/gift_1.png"/>
-                      <img src="img/gift_2.png"/>
-                      <img src="img/gift_3.png"/>
-                      <img src="img/geschuetzt.png"/>
-                      <img src="img/einjaehrig.png"/>
-                      <img src="img/zweijaehrig.png"/>
-                      <img src="img/mehrjaehrig.png"/>
+                      <dummy ng-switch on ="pflanze.Entwicklung">
+                      <img ng-switch-when="1" src="img/einjaehrig.png"/>
+                      <img ng-switch-when="2" src="img/zweijaehrig.png"/>
+                      <img ng-switch-when="m" src="img/mehrjaehrig.png"/>
+                        <dummy ng-switch-when="1-m">
+                      <img src="img/einjaehrig.png"/>-<img src="img/mehrjaehrig.png"/>
+                        </dummy>  
+                        <dummy ng-switch-when="2-m">
+                      <img src="img/zweijaehrig.png"/>-<img src="img/mehrjaehrig.png"/>
+                        </dummy>  
+                      </dummy>                  
+                      <dummy ng-if="pflanze.GiftNummer != -1">
+                        <img style="top:3px" src="img/gift_{{pflanze.GiftNummer}}.png"/>
+                          {{pflanze.GiftText}}
+                                  
+                      </dummy>
                    </div>
                </div>
             </div>
-            <div class="col" style="padding:0">
-               <div class="card">
-                  <div class="item item-divider" >
-                      Entwicklunge
-                   </div>
-                  <div class="item item-text-wrap" >
-                      mehrjährig
-                   </div>
-               </div>
-            </div>
-              
-            <div class="col" style="padding:0">
-               <div class="card">
-                  <div class="item item-divider" >
-                      Giftigkeit
-                   </div>
-                  <div class="item item-text-wrap" >
-                      !!
-                   </div>
-               </div>
-            </div>
-          </div>
+    </div>
 
           
             <ion-scroll zooming="true" min-zoom="1" direction="x"><div style="   white-space: nowrap;">

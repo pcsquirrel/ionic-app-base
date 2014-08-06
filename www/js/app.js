@@ -119,6 +119,23 @@ angular.module('starter', ['ionic'])
                     }else{
                         pflanze.NameDeutsch = pflanze.Namen.Name
                     }
+                    
+                    pflanze.GiftNummer = -1
+                    pflanze.GiftText = ""
+                    if(pflanze.Giftigkeit.indexOf("(!)") == 0){
+                        pflanze.GiftNummer = 0
+                        pflanze.GiftText = pflanze.Giftigkeit.substr(4)
+                    }else if(pflanze.Giftigkeit.indexOf("!!!") == 0){
+                        pflanze.GiftNummer = 3
+                        pflanze.GiftText = pflanze.Giftigkeit.substr(4)
+                    }else if(pflanze.Giftigkeit.indexOf("!!") == 0){
+                        pflanze.GiftNummer = 2
+                        pflanze.GiftText = pflanze.Giftigkeit.substr(3)
+                    }else if(pflanze.Giftigkeit.indexOf("!") == 0){
+                        pflanze.GiftNummer = 1
+                        pflanze.GiftText = pflanze.Giftigkeit.substr(2)
+                    }
+                        
                     break;
                 }
             }
