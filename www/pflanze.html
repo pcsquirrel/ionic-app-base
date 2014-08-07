@@ -30,21 +30,25 @@
                    </div>
                   <div class="item item-text-wrap" >
                       <dummy ng-switch on ="pflanze.Entwicklung">
-                      <img ng-switch-when="1" src="img/einjaehrig.png"/>
-                      <img ng-switch-when="2" src="img/zweijaehrig.png"/>
-                      <img ng-switch-when="m" src="img/mehrjaehrig.png"/>
-                        <dummy ng-switch-when="1-m">
+                      <img ng-switch-when="1" ng-click="openPopover($event, 'einj&auml;hrig')" src="img/einjaehrig.png"/>
+                      <img ng-switch-when="2" ng-click="openPopover($event, 'zweij  &auml;hrig')" src="img/zweijaehrig.png"/>
+                      <img ng-switch-when="m" ng-click="openPopover($event, 'mehrj&auml;hrig')" src="img/mehrjaehrig.png"/>
+                        <dummy ng-switch-when="1-m"  ng-click="openPopover($event, 'ein- bis mehrj&auml;hrig')">
                       <img src="img/einjaehrig.png"/>-<img src="img/mehrjaehrig.png"/>
                         </dummy>  
-                        <dummy ng-switch-when="2-m">
+                        <dummy ng-switch-when="2-m" ng-click="openPopover($event, 'zwei- bis mehrj&auml;hrig')" >
                       <img src="img/zweijaehrig.png"/>-<img src="img/mehrjaehrig.png"/>
                         </dummy>  
                       </dummy>                  
-                      <dummy ng-if="pflanze.GiftNummer != -1">
-                        <img style="top:3px" src="img/gift_{{pflanze.GiftNummer}}.png"/>
-                          {{pflanze.GiftText}}
+                      <dummy ng-switch on="pflanze.GiftNummer">
+                        <img ng-switch-when="0" ng-click="openPopover($event, 'leicht giftig und/oder 
+                                                           hautreizend, fototoxisch, brecherregend, mutagen, stark allergen')" style="top:3px"  src="img/gift_{{pflanze.GiftNummer}}.png"/>
+                        <img ng-switch-when="1" ng-click="openPopover($event, 'giftig')" style="top:3px"  src="img/gift_{{pflanze.GiftNummer}}.png"/>
+                        <img ng-switch-when="2" ng-click="openPopover($event, 'stark giftig')" style="top:3px"  src="img/gift_{{pflanze.GiftNummer}}.png"/>
+                        <img ng-switch-when="3" ng-click="openPopover($event, 'sehr stark giftig')" style="top:3px"  src="img/gift_{{pflanze.GiftNummer}}.png"/>
                                   
                       </dummy>
+                      {{pflanze.GiftText}}
                    </div>
                </div>
             </div>
@@ -73,7 +77,14 @@
           </ion-content>
     </ion-view>
 
-
+<script id="my-popover.html" type="text/ng-template">
+  <ion-popover-view style="width:auto;height:auto;">
+<!--    <ion-header-bar>
+      <h1 class="title">My Popover Title{{info}}</h1>
+    </ion-header-bar>-->
+      <div style="text-align:center; padding: 15px 15px 15px 15px">{{text}}</div>
+  </ion-popover-view>
+</script>
         <!--      <ion-slide-box>
                       <ion-slide><img src="img/IMG_1073.JPG" style="height: 300px;"/></ion-slide>
                       <ion-slide><img src="img/IMG_1074.JPG" style="height: 300px;"/></ion-slide>

@@ -50,13 +50,30 @@ angular.module('starter', ['ionic'])
       };
     })
 
-.controller('PflanzeCtrl', function($scope, $stateParams, PflanzenService) {
+.controller('PflanzeCtrl', function($scope, $stateParams, PflanzenService, $ionicPopover) {
     $scope.id = $stateParams.id;
     PflanzenService.getPflanze($stateParams.id,function (result){
         $scope.pflanze = result;
      });
-
+  $ionicPopover.fromTemplateUrl('my-popover.html', {
+    scope: $scope,
+  }).then(function(popover) {
+    $scope.popover = popover;
+  });
+  $scope.openPopover = function($event, text) {
+      $scope.text=text
+    $scope.popover.show($event);
+  };
+  $scope.closePopover = function() {
+    $scope.popover.hide();
+  };
+  //Cleanup the popover when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.popover.remove();
+  });
+    
     })
+
 
 
 .config(function($stateProvider, $urlRouterProvider) {
