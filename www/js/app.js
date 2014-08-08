@@ -33,7 +33,7 @@ angular.module('starter', ['ionic'])
      PflanzenService.getPflanzen(function (results){
         $scope.allEpisodes = results;
       
-          $scope.groups = _.groupBy(results, "FamilieLatein");
+          $scope.groups = _.groupBy(results, "FamilieDeutsch");
 
         $scope.episodes = results;
      });
@@ -102,7 +102,7 @@ angular.module('starter', ['ionic'])
   function getPflanzenInt(callback){
           if(allePflanzen == null){
 //              $http.get('./js/pflanzen_auswahl.json').success(
-              $http.get('./js/pflanzen_neu.json').success(
+              $http.get('./js/pflanzen_auswahl.json').success(
                   function(pflanzenDl,status){
     //  alert(status);
                     allePflanzen = pflanzenDl

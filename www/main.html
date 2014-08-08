@@ -19,7 +19,13 @@
                 {{episode}}
                </div>
                <a class="item" ng-repeat="pflanze in b" ui-sref="pflanze({id:pflanze.FNL_ID})">
-                   {{pflanze.NameLatein}}
+&nbsp;&nbsp;&nbsp;
+                   <dummy ng-if="pflanze.Namen.length == null">
+                       {{pflanze.Namen.Name}}
+                   </dummy>
+                   <dummy ng-if="pflanze.Namen.length > 1">
+                       {{pflanze.Namen[0].Name}}
+                   </dummy>
                </a>
             </div>
           </div>
