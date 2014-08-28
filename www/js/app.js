@@ -3,7 +3,10 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
+
+
 angular.module('starter', ['ionic'])
+
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -98,15 +101,23 @@ angular.module('starter', ['ionic'])
   var allePflanzen = null
   var pflanzen = []
   var familien = []
-  
+  //todo verbessern
+  //http://stackoverflow.com/questions/23923770/angularjs-combine-results-from-json-into-one-controller-view
   function getPflanzenInt(callback){
           if(allePflanzen == null){
 //              $http.get('./js/pflanzen_auswahl.json').success(
-              $http.get('./js/pflanzen_auswahl.json').success(
-                  function(pflanzenDl,status){
-    //  alert(status);
-                    allePflanzen = pflanzenDl
-                    callback(allePflanzen)
+              $http.get('./js/nur_pflanzen.json').success(
+                  function(nur_pflanzenDl,status){
+                  $http.get('./js/bilder.json').success(
+                      function(bilderDl,status){
+                          $http.get('./js/fundort.json').success(
+                            function(fundortDl,status){
+                            allePflanzen = extendDeep(  bilderDl,  fundortDl,nur_pflanzenDl);
+                            callback(allePflanzen)
+                  }
+              )  
+                  }
+              )  
                   }
               ).
     error(function(data, status, headers, config) {
@@ -162,3 +173,18 @@ angular.module('starter', ['ionic'])
       
   }
 })
+
+function extendDeep(dst) {
+  angular.forEach(arguments, function(obj) {
+    if (obj !== dst) {
+      angular.forEach(obj, function(value, key) {
+        if (dst[key] && dst[key].constructor && dst[key].constructor === Object) {
+          extendDeep(dst[key], value);
+        } else {
+          dst[key] = value;
+        }     
+      });   
+    }
+  });
+  return dst;
+};
