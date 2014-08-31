@@ -1,7 +1,11 @@
-<ion-view title="{{pflanze.NameDeutsch}} / {{pflanze.NameLatein}}">
-    <ion-content>
-    <div class="row responsive-sm">
-        <div class="col">
+<ion-view title="{{pflanze.NameDeutsch}}">
+    <ion-header-bar class="bar-subheader">
+  <h1 class="title">{{pflanze.NameLatein}}</h1>
+</ion-header-bar>
+    
+
+    <ion-content has-header="true">
+
             <div class="card">
               <div class="item item-divider" >
                       Familie
@@ -15,51 +19,52 @@
                   <div class="item item-divider" >
                       Synonyme
                    </div>
-                  <div class="item item-text-wrap" >
+                   <div class="item item-text-wrap" >
                          <div ng-if="pflanze.Synonym">{{pflanze.Synonym}}</div>
-                         <div ng-if="pflanze.Namen.length > 1"> <a ng-repeat="name in pflanze.Namen">{{name.Name}}, </a>
-                   </div>
-               </div>
-                   </div>
-      </div>
-        </div>
-            <div class="col">
-               <div class="card">
+                         <div ng-if="pflanze.Namen.length > 1"> <a ng-repeat="name in pflanze.Namen">{{name.Name}}, </a>  </div>
+                    </div>
+                </div>
                   <div class="item item-divider" >
                       Informationen
                    </div>
                   <div class="item item-text-wrap" >
                       <dummy ng-switch on ="pflanze.Entwicklung">
-                      <img ng-switch-when="1" src="img/einjaehrig.png"/>
-                      <img ng-switch-when="2" src="img/zweijaehrig.png"/>
-                      <img ng-switch-when="m" src="img/mehrjaehrig.png"/>
-                        <dummy ng-switch-when="1-m">
+                      <img ng-switch-when="1" ng-click="openPopover($event, 'einj&auml;hrig')" src="img/einjaehrig.png"/>
+                      <img ng-switch-when="2" ng-click="openPopover($event, 'zweij&auml;hrig')" src="img/zweijaehrig.png"/>
+                      <img ng-switch-when="m" ng-click="openPopover($event, 'mehrj&auml;hrig')" src="img/mehrjaehrig.png"/>
+                        <dummy ng-switch-when="1-m"  ng-click="openPopover($event, 'ein- bis mehrj&auml;hrig')">
                       <img src="img/einjaehrig.png"/>-<img src="img/mehrjaehrig.png"/>
                         </dummy>  
-                        <dummy ng-switch-when="2-m">
+                        <dummy ng-switch-when="2-m" ng-click="openPopover($event, 'zwei- bis mehrj&auml;hrig')" >
                       <img src="img/zweijaehrig.png"/>-<img src="img/mehrjaehrig.png"/>
                         </dummy>  
                       </dummy>                  
-                      <dummy ng-if="pflanze.GiftNummer != -1">
-                        <img style="top:3px" src="img/gift_{{pflanze.GiftNummer}}.png"/>
-                          {{pflanze.GiftText}}
+                      <dummy ng-switch on="pflanze.GiftNummer">
+                        <img ng-switch-when="0" ng-click="openPopover($event, 'leicht giftig und/oder 
+                                                           hautreizend, fototoxisch, brecherregend, mutagen, stark allergen')" style="top:3px"  src="img/gift_{{pflanze.GiftNummer}}.png"/>
+                        <img ng-switch-when="1" ng-click="openPopover($event, 'giftig')" style="top:3px"  src="img/gift_{{pflanze.GiftNummer}}.png"/>
+                        <img ng-switch-when="2" ng-click="openPopover($event, 'stark giftig')" style="top:3px"  src="img/gift_{{pflanze.GiftNummer}}.png"/>
+                        <img ng-switch-when="3" ng-click="openPopover($event, 'sehr stark giftig')" style="top:3px"  src="img/gift_{{pflanze.GiftNummer}}.png"/>
                                   
                       </dummy>
+                      {{pflanze.GiftText}}
                    </div>
-               </div>
-            </div>
-    </div>
+                 <div class="item item-divider" >
+                      Bilder
+                   </div>
+                   <div class="item item-text-wrap" >
 
           
             <ion-scroll zooming="true" min-zoom="1" direction="xy"><div style="   white-space: nowrap;">
-                      <img ng-repeat="bild in pflanze.Bilder" src="img/appbilder/{{pflanze.FNL_ID}}_{{bild.Datei}}" style="height: 300px;"/>
+                      <img ng-repeat="bild in pflanze.Bilder" src="img/appbilder/{{pflanze.FNL_ID}}_{{bild.Datei}}" style="height: 300px; padding: 5px"/>
                       </div>
             </ion-scroll>
-         <div class="card" ng-if="pflanze.Fundorte.length >=1">
+                       </div>
+         <dummy ng-if="pflanze.Fundort.length >=1">
                 <div class="item item-divider" >
                       Fundort
                    </div>
-             <div ng-repeat="Fundort in pflanze.Fundorte">
+             <div ng-repeat="Fundort in pflanze.Fundort">
                 <div class="item item-text-wrap" >
                     <div >{{Fundort.Ort}} bei {{Fundort.Stadt}} in {{Fundort.Bundesland}}, {{Fundort.Land}}</div>
                    <div>{{Fundort.Seehoehe}} Meter &uuml;NN.</div>
@@ -69,11 +74,18 @@
                     <img src="img/{{Fundort.Datei}}" style="width: 100%;"></image>
                 </div>
              </div>
-             </div>
+             </dummy>
           </ion-content>
     </ion-view>
 
-
+<script id="my-popover.html" type="text/ng-template">
+  <ion-popover-view style="width:auto;height:auto;">
+<!--    <ion-header-bar>
+      <h1 class="title">My Popover Title{{info}}</h1>
+    </ion-header-bar>-->
+      <div style="text-align:center; padding: 15px 15px 15px 15px">{{text}}</div>
+  </ion-popover-view>
+</script>
         <!--      <ion-slide-box>
                       <ion-slide><img src="img/IMG_1073.JPG" style="height: 300px;"/></ion-slide>
                       <ion-slide><img src="img/IMG_1074.JPG" style="height: 300px;"/></ion-slide>
