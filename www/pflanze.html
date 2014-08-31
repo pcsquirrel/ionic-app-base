@@ -51,8 +51,8 @@
     </div>
 
           
-            <ion-scroll zooming="true" min-zoom="1" direction="x"><div style="   white-space: nowrap;">
-                      <img ng-repeat="bild in pflanze.Bilder" src="img/{{bild.Datei}}" style="height: 300px;"/>
+            <ion-scroll zooming="true" min-zoom="1" direction="xy"><div style="   white-space: nowrap;">
+                      <img ng-repeat="bild in pflanze.Bilder" src="img/appbilder/{{pflanze.FNL_ID}}_{{bild.Datei}}" style="height: 300px;"/>
                       </div>
             </ion-scroll>
          <div class="card" ng-if="pflanze.Fundorte.length >=1">

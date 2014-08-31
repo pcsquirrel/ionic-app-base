@@ -33,7 +33,7 @@ angular.module('starter', ['ionic'])
      PflanzenService.getPflanzen(function (results){
         $scope.allEpisodes = results;
       
-          $scope.groups = _.groupBy(results, "FamilieLatein");
+          $scope.groups = _.groupBy(results, "FamilieDeutsch");
 
         $scope.episodes = results;
      });
@@ -85,10 +85,18 @@ angular.module('starter', ['ionic'])
   function getPflanzenInt(callback){
           if(allePflanzen == null){
 //              $http.get('./js/pflanzen_auswahl.json').success(
-              $http.get('./js/pflanzen_neu.json').success(
+              $http.get('./js/herbarium_pflanzen.json').success(
                   function(pflanzenDl,status){
     //  alert(status);
-                    allePflanzen = pflanzenDl
+                    allePflanzen = pflanzenDl.Pflanzen.Pflanze
+                    for (var i = 0; i < allePflanzen.length; i++) {
+                        if(allePflanzen[i].Namen.length > 1){
+                            allePflanzen[i].NameDeutsch = allePflanzen[i].Namen[0].Name
+                        }else{
+                            allePflanzen[i].NameDeutsch = allePflanzen[i].Namen.Name
+                        }
+                    }
+
                     callback(allePflanzen)
                   }
               ).
@@ -114,11 +122,11 @@ angular.module('starter', ['ionic'])
             for (var i = 0; i < allePflanzen.length; i++) {
                 if(allePflanzen[i].FNL_ID == FNLID){
                     pflanze = allePflanzen[i]
-                    if(pflanze.Namen.length > 1){
+                   /* if(pflanze.Namen.length > 1){
                         pflanze.NameDeutsch = pflanze.Namen[0].Name
                     }else{
                         pflanze.NameDeutsch = pflanze.Namen.Name
-                    }
+                    }*/
                     
                     pflanze.GiftNummer = -1
                     pflanze.GiftText = ""
