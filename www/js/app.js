@@ -76,15 +76,20 @@ angular.module('starter', ['ionic'])
   });
     
 $scope.$watch('$viewContentLoaded', function( ){
-    $scope.scrollMainToTop();
- });
-   $scope.scrollMainToTop = function() {
+    setTimeout(function(){
         var delegate = $ionicScrollDelegate.$getByHandle('pflanzenbilderscroll');
-    
         var a = delegate.getScrollView().__clientHeight / delegate.getScrollView().options.getContentHeight();
-      
         delegate.zoomTo(a);
-  }; 
+          delegate.getScrollView().options.minZoom = a;
+        var delegate = $ionicScrollDelegate.$getByHandle('fundortbilderscroll');
+        var a = delegate.getScrollView().__clientHeight / delegate.getScrollView().options.getContentHeight();
+        delegate.zoomTo(a);
+         delegate.getScrollView().options.minZoom = a;
+       // alert(a)
+    },1000)
+   
+ });
+  
     })
 
 

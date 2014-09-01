@@ -2,7 +2,8 @@
  * ionic.bundle.js is a concatenation of:
  * ionic.js, angular.js, angular-animate.js,
  * angular-sanitize.js, angular-ui-router.js,
- * and ionic-angular.js
+ * and ionic-angular.j
+ 
  */
 
 /*!
@@ -4100,20 +4101,23 @@ ionic.views.Scroll = ionic.views.View.inherit({
 
     this.__scrollLeft = this.options.startX;
     this.__scrollTop = this.options.startY;
+      //alert(this.__content.clientHeight);
 
     // Get the render update function, initialize event handlers,
     // and calculate the size of the scroll container
     this.__callback = this.getRenderFn();
     this.__initEventHandlers();
     this.__createScrollbars();
-
+ //   alert(this.__content.clientHeight);
   },
 
   run: function() {
     this.resize();
 
+
     // Fade them out
     this.__fadeScrollbars('out', this.options.scrollbarResizeFadeDelay);
+  
   },
 
 
