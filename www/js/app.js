@@ -161,6 +161,17 @@ angular.module('starter', ['ionic'])
                     }else{
                         pflanze.NameDeutsch = pflanze.Namen.Name
                     }*/
+                   if(pflanze.Bilder[0] == null){
+                       var temp = pflanze.Bilder
+                       pflanze.Bilder = []
+                       pflanze.Bilder[0] = temp
+                    }
+                    
+                   if(pflanze.Fundorte[0] == null){
+                       var temp = pflanze.Fundorte
+                       pflanze.Fundorte = []
+                       pflanze.Fundorte[0] = temp
+                    }
                     
                     pflanze.GiftNummer = -1
                     pflanze.GiftText = ""

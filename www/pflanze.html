@@ -28,6 +28,7 @@
                       Informationen
                    </div>
                   <div class="item item-text-wrap" >
+                        <img ng-show="pflanze.geschuetzt" ng-click="openPopover($event, 'gessch&uuml;tzt')" style="top:3px"  src="img/geschuetzt.png"/>
                       <dummy ng-switch on ="pflanze.Entwicklung">
                       <img ng-switch-when="1" ng-click="openPopover($event, 'einj&auml;hrig')" src="img/einjaehrig.png"/>
                       <img ng-switch-when="2" ng-click="openPopover($event, 'zweij&auml;hrig')" src="img/zweijaehrig.png"/>
@@ -56,22 +57,22 @@
 
           
             <ion-scroll zooming="true" min-zoom="1" direction="xy"><div style="   white-space: nowrap;">
-                      <img ng-repeat="bild in pflanze.Bilder" src="img/appbilder/{{pflanze.FNL_ID}}_{{bild.Datei}}" style="height: 300px; padding: 5px"/>
+                      <img ng-repeat="bild in pflanze.Bilder" src="img/appbilder/{{pflanze.FNL_ID}}-{{bild.Datei}}" style="height: 300px; padding: 5px"/>
                       </div>
             </ion-scroll>
                        </div>
-         <dummy ng-if="pflanze.Fundort.length >=1">
+         <dummy ng-if="pflanze.Fundorte.length >=1">
                 <div class="item item-divider" >
                       Fundort
                    </div>
-             <div ng-repeat="Fundort in pflanze.Fundort">
+             <div ng-repeat="Fundort in pflanze.Fundorte">
                 <div class="item item-text-wrap" >
-                    <div >{{Fundort.Ort}} bei {{Fundort.Stadt}} in {{Fundort.Bundesland}}, {{Fundort.Land}}</div>
-                   <div>{{Fundort.Seehoehe}} Meter &uuml;NN.</div>
+                    <div ><dummy ng-if="Fundort.Ort != Fundort.Stadt">{{Fundort.Ort}} bei </dummy>{{Fundort.Stadt}} in {{Fundort.Bundesland}}, {{Fundort.Land}}</div>
+                   <div ng-if="Fundort.Hoehe &gt; 0">{{Fundort.Hoehe}}m See&ouml;he</div>
                 </div>
 
                 <div class="item item-text-wrap" style="padding: 0px;" >
-                    <img src="img/{{Fundort.Datei}}" style="width: 100%;"></image>
+                    <img src="img/appbilder/karten/{{Fundort.Datei}}" ></image>
                 </div>
              </div>
              </dummy>
