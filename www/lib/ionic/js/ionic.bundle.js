@@ -38031,7 +38031,7 @@ IonicModule
    * load the position and scroll to it.
    * @param {boolean=} shouldAnimate Whether to animate the scroll.
    */
-  'scrollToRememberedPosition'
+  'scrollToRememberedPosition',
   /**
    * @ngdoc method
    * @name $ionicScrollDelegate#$getByHandle
@@ -38041,6 +38041,7 @@ IonicModule
    *
    * Example: `$ionicScrollDelegate.$getByHandle('my-handle').scrollTop();`
    */
+    'zoomTo'
 ]));
 
 
@@ -39450,6 +39451,9 @@ function($scope, scrollViewOptions, $timeout, $window, $$scrollValueCache, $loca
       });
     }
   };
+    this.zoomTo = function(value){
+        scrollView.zoomTo(value);
+    }
 
   /**
    * @private

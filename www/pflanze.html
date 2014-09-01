@@ -54,10 +54,12 @@
                       Bilder
                    </div>
                    <div class="item item-text-wrap" >
-
+<button ng-click="scrollMainToTop()">
+      Scroll content to top!
+    </button>
           
-            <ion-scroll zooming="true" min-zoom="1" direction="xy"><div style="   white-space: nowrap;">
-                      <img ng-repeat="bild in pflanze.Bilder" src="img/appbilder/{{pflanze.FNL_ID}}-{{bild.Datei}}" style="height: 300px; padding: 5px"/>
+            <ion-scroll zooming="true" max-zoom="1" min-zoom="0.1" direction="xy" delegate-handle="pflanzenbilderscroll" style="height: 300px;"><div style="   white-space: nowrap;">
+                      <img ng-repeat="bild in pflanze.Bilder" src="img/appbilder/{{pflanze.FNL_ID}}-{{bild.Datei}}" style=" padding: 5px"/>
                       </div>
             </ion-scroll>
                        </div>
