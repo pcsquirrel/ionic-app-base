@@ -56,8 +56,8 @@
                    <div class="item item-text-wrap" >
 
           
-            <ion-scroll zooming="true" min-zoom="1" direction="xy"><div style="   white-space: nowrap;">
-                      <img ng-repeat="bild in pflanze.Bilder" src="img/appbilder/{{pflanze.FNL_ID}}-{{bild.Datei}}" style="height: 300px; padding: 5px"/>
+            <ion-scroll zooming="true" max-zoom="1" current-zoom="0.5" direction="xy" style="height:300px;"><div style="   white-space: nowrap; ">
+                      <img ng-repeat="bild in pflanze.Bilder" src="img/appbilder/{{pflanze.FNL_ID}}-{{bild.Datei}}" style=" padding: 5px"/>
                       </div>
             </ion-scroll>
                        </div>
@@ -68,12 +68,16 @@
              <div ng-repeat="Fundort in pflanze.Fundorte">
                 <div class="item item-text-wrap" >
                     <div ><dummy ng-if="Fundort.Ort != Fundort.Stadt">{{Fundort.Ort}} bei </dummy>{{Fundort.Stadt}} in {{Fundort.Bundesland}}, {{Fundort.Land}}</div>
-                   <div ng-if="Fundort.Hoehe &gt; 0">{{Fundort.Hoehe}}m See&ouml;he</div>
-                </div>
+                   <div ng-if="Fundort.Hoehe &gt; 0">{{Fundort.Hoehe}}m Seeh&ouml;he</div>
+                    <p></p >
+                
 
-                <div class="item item-text-wrap" style="padding: 0px;" >
-                    <img src="img/appbilder/karten/{{Fundort.Datei}}" ></image>
-                </div>
+                <ion-scroll zooming="true" min-zoom="1" zoom="3" direction="xy"><div style="   white-space: nowrap;">
+                    <div style="   white-space: nowrap; width: 100%">
+                        <img src="img/appbilder/karten/{{Fundort.Datei}}" ></image>
+                    </div>
+                </ion-scroll>
+             </div>
              </div>
              </dummy>
           </ion-content>

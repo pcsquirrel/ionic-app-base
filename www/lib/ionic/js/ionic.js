@@ -4198,7 +4198,7 @@ ionic.views.Scroll = ionic.views.View.inherit({
   __refreshStart: null,
 
   /** Zoom level */
-  __zoomLevel: 1,
+  __zoomLevel: 0.5,
 
   /** Scroll position on x-axis */
   __scrollLeft: 0,

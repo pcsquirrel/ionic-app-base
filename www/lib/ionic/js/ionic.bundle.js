@@ -4042,6 +4042,8 @@ ionic.views.Scroll = ionic.views.View.inherit({
 
       // The ms interval for triggering scroll events
       scrollEventInterval: 10,
+        
+      currentZoom: 1,
 
       getContentWidth: function() {
         return Math.max(self.__content.scrollWidth, self.__content.offsetWidth);
@@ -4100,6 +4102,12 @@ ionic.views.Scroll = ionic.views.View.inherit({
 
     this.__scrollLeft = this.options.startX;
     this.__scrollTop = this.options.startY;
+ //   this.__zoomLevel = this.options.currentZoom;
+      var a = this.options.getContentHeight();
+    if(this.__container.clientHeight < a){
+        this.__zoomLevel =this.__container.clientHeight / this.options.getContentHeight();
+    }
+     
 
     // Get the render update function, initialize event handlers,
     // and calculate the size of the scroll container
@@ -42374,7 +42382,8 @@ function($timeout, $controller, $ionicBind) {
           scrollbarY: '@',
           zooming: '@',
           minZoom: '@',
-          maxZoom: '@'
+          maxZoom: '@',
+          currentZoom: '@'    
         });
         $scope.direction = $scope.direction || 'y';
 
@@ -42401,7 +42410,8 @@ function($timeout, $controller, $ionicBind) {
           scrollingY: $scope.direction.indexOf('y') >= 0,
           zooming: $scope.$eval($scope.zooming) === true,
           maxZoom: $scope.$eval($scope.maxZoom) || 3,
-          minZoom: $scope.$eval($scope.minZoom) || 0.5
+          minZoom: $scope.$eval($scope.minZoom) || 0.5,
+          currentZoom : $scope.$eval($scope.currentZoom) || 1
         };
         if (isPaging) {
           scrollViewOptions.speedMultiplier = 0.8;
