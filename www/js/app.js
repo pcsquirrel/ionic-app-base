@@ -53,7 +53,7 @@ angular.module('starter', ['ionic'])
       };
     })
 
-.controller('PflanzeCtrl', function($scope, $stateParams, PflanzenService, $ionicPopover) {
+.controller('PflanzeCtrl', function($scope, $stateParams, PflanzenService, $ionicPopover, $ionicScrollDelegate) {
     $scope.id = $stateParams.id;
     PflanzenService.getPflanze($stateParams.id,function (result){
         $scope.pflanze = result;
@@ -75,6 +75,21 @@ angular.module('starter', ['ionic'])
     $scope.popover.remove();
   });
     
+$scope.$watch('$viewContentLoaded', function( ){
+    setTimeout(function(){
+        var delegate = $ionicScrollDelegate.$getByHandle('pflanzenbilderscroll');
+        var a = delegate.getScrollView().__clientHeight / delegate.getScrollView().options.getContentHeight();
+        delegate.zoomTo(a);
+          delegate.getScrollView().options.minZoom = a;
+        var delegate = $ionicScrollDelegate.$getByHandle('fundortbilderscroll');
+        var a = delegate.getScrollView().__clientHeight / delegate.getScrollView().options.getContentHeight();
+        delegate.zoomTo(a);
+         delegate.getScrollView().options.minZoom = a;
+       // alert(a)
+    },1000)
+   
+ });
+  
     })
 
 

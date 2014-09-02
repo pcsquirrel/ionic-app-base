@@ -2,7 +2,8 @@
  * ionic.bundle.js is a concatenation of:
  * ionic.js, angular.js, angular-animate.js,
  * angular-sanitize.js, angular-ui-router.js,
- * and ionic-angular.js
+ * and ionic-angular.j
+ 
  */
 
 /*!
@@ -4102,26 +4103,21 @@ ionic.views.Scroll = ionic.views.View.inherit({
 
     this.__scrollLeft = this.options.startX;
     this.__scrollTop = this.options.startY;
- //   this.__zoomLevel = this.options.currentZoom;
-      var a = this.options.getContentHeight();
-    if(this.__container.clientHeight < a){
-        this.__zoomLevel =this.__container.clientHeight / this.options.getContentHeight();
-    }
-     
 
     // Get the render update function, initialize event handlers,
     // and calculate the size of the scroll container
     this.__callback = this.getRenderFn();
     this.__initEventHandlers();
     this.__createScrollbars();
-
   },
 
   run: function() {
     this.resize();
 
+
     // Fade them out
     this.__fadeScrollbars('out', this.options.scrollbarResizeFadeDelay);
+  
   },
 
 
@@ -38039,7 +38035,7 @@ IonicModule
    * load the position and scroll to it.
    * @param {boolean=} shouldAnimate Whether to animate the scroll.
    */
-  'scrollToRememberedPosition'
+  'scrollToRememberedPosition',
   /**
    * @ngdoc method
    * @name $ionicScrollDelegate#$getByHandle
@@ -38049,6 +38045,7 @@ IonicModule
    *
    * Example: `$ionicScrollDelegate.$getByHandle('my-handle').scrollTop();`
    */
+    'zoomTo'
 ]));
 
 
@@ -39458,6 +39455,9 @@ function($scope, scrollViewOptions, $timeout, $window, $$scrollValueCache, $loca
       });
     }
   };
+    this.zoomTo = function(value){
+        scrollView.zoomTo(value);
+    }
 
   /**
    * @private
