@@ -14,11 +14,11 @@
           <ion-content>
           <div class="list">
           
-           <div ng-repeat="(episode, b) in groups">
+           <div ng-repeat="(episode, b) in groups ">
                <div class="item item-divider" >
                 {{episode}}
                </div>
-               <a class="item" ng-repeat="pflanze in b" ui-sref="pflanze({id:pflanze.FNL_ID})">
+               <a class="item" ng-repeat="pflanze in b | orderBy:'NameDeutsch'" ui-sref="pflanze({id:pflanze.FNL_ID})">
                        {{pflanze.NameDeutsch}}
                </a>
             </div>

@@ -132,6 +132,8 @@ $scope.$watch('$viewContentLoaded', function( ){
                             allePflanzen[i].NameDeutsch = allePflanzen[i].Namen.Name
                         }
                     }
+                      
+                    allePflanzen = _.indexBy(allePflanzen, 'FNL_ID');
 
                     callback(allePflanzen)
           /*    $http.get('./js/nur_pflanzen.json').success(
@@ -165,18 +167,10 @@ $scope.$watch('$viewContentLoaded', function( ){
       getPflanzen: function(callback) {
           getPflanzenInt(callback)
       },
-      getPflanze: function(FNLID, callback){
+      getPflanze: function(FNL_ID, callback){
           getPflanzenInt(function(allePflanzen){
-              var pflanze = null
-            for (var i = 0; i < allePflanzen.length; i++) {
-                if(allePflanzen[i].FNL_ID == FNLID){
-                    pflanze = allePflanzen[i]
-                   /* if(pflanze.Namen.length > 1){
-                        pflanze.NameDeutsch = pflanze.Namen[0].Name
-                    }else{
-                        pflanze.NameDeutsch = pflanze.Namen.Name
-                    }*/
-                   if(pflanze.Bilder[0] == null){
+              var pflanze = allePflanzen[FNL_ID];
+               if(pflanze.Bilder[0] == null){
                        var temp = pflanze.Bilder
                        pflanze.Bilder = []
                        pflanze.Bilder[0] = temp
@@ -204,9 +198,6 @@ $scope.$watch('$viewContentLoaded', function( ){
                         pflanze.GiftText = pflanze.Giftigkeit.substr(2)
                     }
                         
-                    break;
-                }
-            }
             callback(pflanze)  
           })
       }
